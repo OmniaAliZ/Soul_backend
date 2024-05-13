@@ -13,22 +13,8 @@ public class DatabaseContext : DbContext
     public DbSet<Address> Addresses { get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }
 
-    private IConfiguration _config;
-    public DatabaseContext(IConfiguration config)
-    {
-        _config = config;
-    }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var dataSourceBuilder = new NpgsqlDataSourceBuilder(@$"Host={_config["Db:Host"]};Username={_config["Db:Username"]};Database={_config["Db:Database"]};Password={_config["Db:Password"]};Port={_config["Db:Port"]}");
-        dataSourceBuilder.MapEnum<Role>();
-        dataSourceBuilder.MapEnum<Status>();
-        var dataSource = dataSourceBuilder.Build();
+    public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
-        optionsBuilder.UseNpgsql(dataSource)
-       .UseSnakeCaseNamingConvention();
-
-    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasPostgresEnum<Role>();
