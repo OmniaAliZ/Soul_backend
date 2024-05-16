@@ -3,7 +3,9 @@ using sda_onsite_2_csharp_backend_teamwork.src.Abstraction;
 using sda_onsite_2_csharp_backend_teamwork.src.Controller;
 using sda_onsite_2_csharp_backend_teamwork.src.DTO;
 using sda_onsite_2_csharp_backend_teamwork.src.Entity;
+
 namespace sdaonsite_2_csharp_backend_teamwork.src.Controller;
+[Route("api/v1/categories")]
 public class CategoryController : BaseController
 {
     private ICategoryService _CategoryService;
