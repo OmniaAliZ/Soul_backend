@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using sda_onsite_2_csharp_backend_teamwork.src.Entity;
@@ -16,7 +17,9 @@ namespace sda_onsite_2_csharp_backend_teamwork.src.DTO
     }
     public class OrderCreateDto
     {
+        [Required]
         public Guid AddressId { get; set; }
+        [Required]
         public double TotalPrice { set; get; }
     }
     public class CheckoutDto
