@@ -32,10 +32,14 @@ public class ProductService : IProductService
         ProductReadDto? productRead = _mapper.Map<ProductReadDto>(product);
         return productRead;
     }
-    public ProductReadDto? FindByCategory(Guid categoryId)
+    public IEnumerable<ProductReadDto>? FindByCategory(Guid categoryId)
     {
-        Product? product = _productRepository.FindByCategory(categoryId);
-        ProductReadDto? productRead = _mapper.Map<ProductReadDto>(product);
+        var products = _productRepository.FindByCategory(categoryId);
+        if (products is null)
+        {
+            return null;
+        }
+        var productRead = products.Select(_mapper.Map<ProductReadDto>);
         return productRead;
     }
 
