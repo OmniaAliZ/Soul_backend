@@ -8,6 +8,7 @@ namespace sda_onsite_2_csharp_backend_teamwork.src.Abstraction;
 public interface IAddressRepository
 {
     public IEnumerable<Address> FindAll();
+    public IEnumerable<Address> FindByUserId(Guid id);
     public Address? FindOne(Guid id);
     public Address CreateOne(Address address);
     public Address? UpdateOne(Address updatedAddress);

@@ -7,6 +7,7 @@ public class AddressReadDto
     public Guid Id { get; set; }
     public string Country { get; set; }
     public string City { get; set; }
+    public int Zip_code { get; set; }
     public string Street { get; set; }
 }
 public class AddressCreateDto

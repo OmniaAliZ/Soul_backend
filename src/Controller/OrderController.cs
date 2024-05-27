@@ -27,7 +27,7 @@ public class OrderController : BaseController
         return Ok(_orderService.FindOne(id));
     }
 
-    [Authorize(Roles = "Admin,Customer")]
+    // [Authorize(Roles = "Admin,Customer")]
     [HttpPost("checkout")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

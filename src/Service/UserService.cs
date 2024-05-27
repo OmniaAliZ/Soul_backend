@@ -100,14 +100,14 @@ public class UserService : IUserService
     }
     public UserReadDto? SignUp(UserCreateDto user)
     {
-        User? foundUser = _userRepository.FindByEmail(user.Email);
+        User? foundUser = _userRepository.FindByEmail(user.Email!);
         if (foundUser is not null)
         {
             throw CustomErrorException.Forbidden("You already signed up");
         }
         byte[] pepper = Encoding.UTF8.GetBytes(_config["Jwt:Pepper"]!);
 
-        PasswordUtility.HashPassword(user.Password, out string hashedPassword, pepper);
+        PasswordUtility.HashPassword(user.Password!, out string hashedPassword, pepper);
         user.Password = hashedPassword;
 
         var createUser = _mapper.Map<User>(user);

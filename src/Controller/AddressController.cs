@@ -36,7 +36,13 @@ public class AddressController : BaseController
         return _addressService.FindAll();
     }
 
-    [Authorize(Roles = "Admin,Customer")]
+    [HttpGet("user/{id}")]
+    public IEnumerable<AddressReadDto> FindByUserId(Guid id)
+    {
+        return _addressService.FindByUserId(id);
+    }
+
+    // [Authorize(Roles = "Admin,Customer")]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

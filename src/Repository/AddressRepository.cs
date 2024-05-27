@@ -18,7 +18,12 @@ public class AddressRepository : IAddressRepository
     {
         return _addresses;
     }
+    public IEnumerable<Address> FindByUserId(Guid id)
+    {
+        var addresses = _addresses.Where((address) => address.UserId == id);
 
+        return addresses;
+    }
     public Address? FindOne(Guid id)
     {
         Address? address = _addresses.FirstOrDefault(address => address.Id == id);

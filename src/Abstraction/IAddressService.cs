@@ -6,6 +6,7 @@ namespace sda_onsite_2_csharp_backend_teamwork.src.Abstraction;
 public interface IAddressService
 {
     public IEnumerable<AddressReadDto> FindAll();
+    public IEnumerable<AddressReadDto> FindByUserId(Guid id);
     public AddressReadDto? FindOne(Guid id);
     public AddressReadDto CreateOne(AddressCreateDto address, string userId);
     public AddressReadDto? UpdateOne(Guid id, Address address);
