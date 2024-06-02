@@ -48,6 +48,7 @@ public class AddressRepository : IAddressRepository
         Address? address = FindOne(id);
         if (address is null) return false;
         _addresses.Remove(address);
+        _databaseContext.SaveChanges();
         return true;
     }
 }
